@@ -14,7 +14,7 @@ for (let i = 1; i <= 6; i++) {
     randomNumberArray.push(num)
 }
 
-let petrolBunkGenerator = randomNumberArray.sort().join(', ');
+var petrolBunkGenerator = randomNumberArray.sort();
 
 let carSteps = (min, max) => {
     let carStep = Math.random() * (max - min) + min
@@ -23,27 +23,33 @@ let carSteps = (min, max) => {
 
 var sum = 0;
 var i = 1;
+var carStepsNumber;
 
-console.log(petrolBunkGenerator)
-while (!(startPetrol <= 0)) {
-    if (sum >= 100) {
-         console.log("win")
-        break;
-    } else {
-        var carStepsNumber = carSteps(1, 6)
-        startPetrol = startPetrol - (carStepsNumber * 2);
+function onView() {
+    while (!(startPetrol <= 0)) {
+
+        if (startPetrol <= 12) {
+            carStepsNumber = carSteps(1, (startPetrol / 2))
+        } else {
+            carStepsNumber = carSteps(1, 6)
+        }
         sum = sum + carStepsNumber;
+        startPetrol = startPetrol - (carStepsNumber * 2);
         if (petrolBunkGenerator.includes(sum)) {
             startPetrol = startPetrol + 30;
         }
-        console.log(`Move ${i} - car at ${sum}, petrol remaining ${startPetrol}`)
+        document.body.innerHTML += `Move ${i} - carat ${sum}, petrol remaining ${startPetrol} <br>`;
         i++;
+        if (startPetrol == 0) {
+            document.body.innerHTML += `Move ${i} - carat ${sum}, petrol remaining ${startPetrol}, game over <br>`;
+        }
     }
 }
 
 let startGameHandler = () => {
     document.querySelector('.game-started').innerHTML = "Game Started"
-    // document.querySelector(".petrol").innerHTML = `Petrol pumps generated &nbsp; ${petrolBunkGenerator}`;
+    document.querySelector(".petrol").innerHTML = `Petrol pumps generated &nbsp; ${petrolBunkGenerator}`;
+    onView();
 }
 
 startGame.addEventListener('click', startGameHandler)
