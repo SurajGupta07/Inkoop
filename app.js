@@ -38,10 +38,10 @@ function onView() {
         if (petrolBunkGenerator.includes(sum)) {
             startPetrol = startPetrol + 30;
         }
-        document.body.innerHTML += `Move ${i} - carat ${sum}, petrol remaining ${startPetrol} <br>`;
+        document.body.innerHTML += `Move ${i} - car at ${sum}, petrol remaining ${startPetrol} <br>`;
         i++;
         if (startPetrol == 0) {
-            document.body.innerHTML += `Move ${i} - carat ${sum}, petrol remaining ${startPetrol}, game over <br>`;
+            document.body.innerHTML += `Move ${i} - car at ${sum}, petrol remaining ${startPetrol}, game over <br>`;
         }
     }
 }
