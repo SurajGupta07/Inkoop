@@ -3,3 +3,13 @@
 .add-position{
     margin: 1rem;
 }
+
+.body-container{
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.game-started{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}

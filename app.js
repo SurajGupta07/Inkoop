@@ -38,10 +38,16 @@ function onView() {
         if (petrolBunkGenerator.includes(sum)) {
             startPetrol = startPetrol + 30;
         }
-        document.body.innerHTML += `Move ${i} - car at ${sum}, petrol remaining ${startPetrol} <br>`;
+        var petrolRemainingContainer = document.createElement('div');
+        petrolRemainingContainer.style.marginLeft = "1rem"
+        petrolRemainingContainer.innerHTML =  `Move ${i} - car at ${sum}, petrol remaining ${startPetrol} <br>`;
+        document.body.appendChild(petrolRemainingContainer);
         i++;
         if (startPetrol == 0) {
-            document.body.innerHTML += `Move ${i} - car at ${sum}, petrol remaining ${startPetrol}, game over <br>`;
+            var gamerOver = document.createElement('div');
+            gamerOver.style.marginLeft = "1rem"
+            gamerOver.innerHTML = `Move ${i} - car at ${sum}, petrol remaining ${startPetrol}, game over <br>`;
+            document.body.appendChild(gamerOver);
         }
     }
 }
